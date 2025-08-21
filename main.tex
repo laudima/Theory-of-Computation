@@ -24,6 +24,8 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,calc,chains,automata}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -52,7 +54,7 @@
     tabsize=2
 }
 
-\lstset{style=mystyle}
+\lstset{style=mystyle} % Definición del estilo de código
 
 \newcounter{Ejercicio}
 \newtcolorbox[use
@@ -79,18 +81,46 @@ colback=white!50!mygray,colframe=cyan!75!black, fonttitle=\bfseries, title=Defin
 \lhead{\includegraphics[scale=0.065]{images/unam_white.jpg}}
 \chead{\large\textbf{Universidad Nacional Autónoma de México} \\
 \textbf{Facultad de Ciencias}\\
-\textsc{Compiladores}\\
-\textsc{Tarea 3}\\  
-Laura Itzel Rodríguez Dimayuga }
+\textsc{Teoría de la Computación}\\
+\textsc{Notas de Clase}\\  
+\textbf{Profesor:} Enrique F. Soto-Astorga, MA/MSc.\\
+\textbf{Ayudante:} Laura Itzel Rodríguez Dimayuga }
 \renewcommand{\headrulewidth}{1pt}
 \pagenumbering{gobble}
 \AtBeginDocument{\vspace*{4.2\baselineskip}}
 
-\pagecolor{black}
-\color{white}% 
+\pagecolor{black} % DarkMode
+\color{white}     % DarkMode
 
 \begin{document}
-    \foreach \num in {1,...,5} {
-        \import{problems}{p\num}
-    }
+%banda de una maquina de Turing, créditos a Cesar Hernandez 
+\begin{tikzpicture}
+  \tikzset{tape/.style={minimum size=.2cm, draw}}
+  \begin{scope}[yshift=2cm,start chain=0 going right, node distance=0mm]
+   \foreach \x [count=\i] in {1,0,1,1,0,0,0,1,1,0,0,1,0,1,1,1,1,0,0,0,1,0,1,0,1,0,1,1,0,1,1,1,0,1,0,0,1,1,0,0,0,1} {
+    \ifnum\i=42 % if last node reset outer sep to 0pt
+      \node [on chain=0, tape, outer sep=0pt] (n\i) {\tiny{\x}};
+      \draw (n\i.north east) -- ++(.1,0) decorate [decoration={zigzag, segment length=.12cm, amplitude=.02cm}] {-- ($(n\i.south east)+(+.1,0)$)} -- (n\i.south east) -- cycle;
+     \else
+      \node [on chain=0, tape] (n\i) {\tiny{\x}};
+     \fi
+     \ifnum\i=1 % if first node draw a thick line at the left
+      \draw [line width=.1cm] (n\i.north west) -- (n\i.south west);
+     \fi
+   }
+  \end{scope}
+\end{tikzpicture}
+
+\tableofcontents
+\newpage
+    \import{chapters}{c1}
+    \import{chapters}{c2}
+    \import{chapters}{c3}
+    \import{chapters}{c4}
+    % \foreach \num in {1,...,5} {
+    %     \import{problems}{p\num}
+    % }
 \end{document}
+
+% Para escribir código e importarlo 
+% \lstinputlisting[language=Python]{code/nombre_archivo.py}
