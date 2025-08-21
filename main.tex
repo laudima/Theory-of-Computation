@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{ dsfont }
+\usepackage{adjustbox}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{caption}
+\usepackage[nocheck]{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{biblatex}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}
+\usepackage{import}
+\usepackage{MnSymbol,wasysym}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{20,0.95,0.92}
+\definecolor{mygray}{gray}{0.8  }
+
+% color de los codigos 
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{black},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\newcounter{Ejercicio}
+\newtcolorbox[use
+counter=Ejercicio]{Pro}[1][]{drop fuzzy
+shadow,enhanced,
+colback=white!50!mygray,colframe=green!65!black, fonttitle=\bfseries, title=Ejercicio \thetcbcounter, lower separated=false,#1}
+
+
+\newcounter{Definición}
+\newtcolorbox[use
+counter=Definición]{Def}[1][]{drop fuzzy
+shadow,enhanced,
+colback=white!50!mygray,colframe=cyan!75!black, fonttitle=\bfseries, title=Definición \thetcbcounter, lower separated=false,#1}
+
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\addto\captionsspanish{\renewcommand{\proofname}{\normalfont{\textbf{Solución}}}}
+
+\addbibresource{references.bib}
+
+\thispagestyle{fancy}
+\rhead{\includegraphics[scale=0.07]{images/ciencias_white.jpg}}
+\lhead{\includegraphics[scale=0.065]{images/unam_white.jpg}}
+\chead{\large\textbf{Universidad Nacional Autónoma de México} \\
+\textbf{Facultad de Ciencias}\\
+\textsc{Compiladores}\\
+\textsc{Tarea 3}\\  
+Laura Itzel Rodríguez Dimayuga }
+\renewcommand{\headrulewidth}{1pt}
+\pagenumbering{gobble}
+\AtBeginDocument{\vspace*{4.2\baselineskip}}
+
+\pagecolor{black}
+\color{white}% 
+
+\begin{document}
+    \foreach \num in {1,...,5} {
+        \import{problems}{p\num}
+    }
+\end{document}

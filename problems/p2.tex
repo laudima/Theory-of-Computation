@@ -1,0 +1,47 @@
+\begin{Pro}
+Divide el siguiente programa en C++ en lexemas y genera los tokens correspondientes:
+\end{Pro}
+\begin{lstlisting}[language=C++]
+    float limitedSquare(x) float x; {
+        /* return x-squared, bit never mover than 100 */
+        return(x <= -10.0 || x>=10.0) ? 100 : x*x;
+    }
+\end{lstlisting}
+
+\begin{proof}
+    \hspace{5mm}
+
+Después del escaneo no tenemos comentarios. Ni espacios en blanco. 
+Lexemas: \texttt{float, limitedSquare, (, x, ), float, x, ;,{, return, (, x, <=, -10.0, ||, x, >=, 10.0, ), ?, 100, :, x, *, x, ;, }}
+
+Tokens:
+\begin{lstlisting}
+<float>
+<id, limitedSquare>
+<(>
+<id, x>
+<)>
+<float>
+<id, x>
+<;>
+<{>
+<return>
+<(>
+<id, x>
+<<=>
+<float,-10.0>
+<||>
+<id, x>
+<>=>
+<float,10.0>
+<)>
+<?>
+<100>
+<:>
+<id, x>
+<*>
+<id, x>
+<;>
+<}>
+\end{lstlisting}
+\end{proof}

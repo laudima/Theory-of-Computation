@@ -1,0 +1,26 @@
+\begin{Pro}
+    Realiza una breve investigación acerca del esquema de firma de Merkle(MSS). La investigación debe 
+    responder como mínimo las siguientes preguntas:
+    \begin{itemize}
+        \item ¿Qué es un árbol de Merkle?
+        \item ¿De qué manera se generan firmas? 
+        \item ¿De qué manera se verifican las firmas? 
+    \end{itemize}
+\end{Pro}
+
+\begin{proof}
+    \hspace{5mm}
+    \begin{itemize}
+        \item \textbf{Árbol de Merkle:} Se puede considar como una estructura de datos 
+        en donde cada hoja es un hash de un bloque de datos y cada nodo interno es un hash de las concatenaciones
+        de los nodos hijos. La raíz del árbol es el hash de la concatenación de las hojas. Nacieron en 1980 con Ralph Merkle.
+
+        \item \textbf{Generación de firmas:} Hacemos un hash sobre todas las hojas del árbol( que pueden ser las palabras que queremos cifrar). 
+        \item \textbf{Verificación de firmas:} Se puede verificar la firma de manera eficiente utilizando el hash de la raíz del árbol y el hash de las hojas.
+        
+        Aqui esta un ejemplo del algoritmo de firma de Merkle:
+        
+        \lstinputlisting{code/arbol_merkle.py}
+        
+    \end{itemize}
+\end{proof}

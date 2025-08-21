@@ -1,0 +1,56 @@
+\begin{Pro}
+Indica los valores asignados a $w$, $x$, $y$ y $z$. en los siguientes dos códigos estructurados por bloques.
+Muestrala tabla de símbolos en cada bloque con una implementación imperativa en cada caso:
+\end{Pro}
+
+\begin{multicols}{2}
+\begin{lstlisting}[language=C++]
+int w,x,y,z;
+int i = 4; int j = 5;
+{
+    int j =7;
+    i =6; 
+    w = i+j;
+}
+x = i+j;
+{
+    int i = 8;
+    y = i+j;
+}
+z = i+j;
+\end{lstlisting}
+\begin{lstlisting}[language=C++]
+int w,x,y,z;
+int i = 3; int j = 4;
+{
+    int i = 5;
+    w = i+j;
+}
+x = i+j;
+{
+    int j = 6;
+    i = 7;
+    y = i+j;
+}
+z = i+j;
+\end{lstlisting}
+
+\end{multicols}
+\begin{proof}
+    \hspace{5mm}
+
+\begin{table}[h!]
+\begin{tabular}{lll}
+Variable                    & Scope    & Comentario                                                 \\
+int i =4                    & Bloque 1 & Nueva variable                                             \\
+int j = 5                   & Bloque 1 & Nueva variable                                             \\
+int j = 7                   & Bloque 2 & Nueva variable, solo queda en el Bloque 2                  \\ 
+i=6                         & Bloque 2 & Afecta al Bloque 1                                         \\
+x = 9                       & Bloque 1 & Afecta al Bloque 1                                         \\
+int i =8                    & Bloque 3 & Nueva variable, solo queda en el Bloque 3                  \\
+y = 13                      & Bloque 3 & Afecta al Bloque 1                                         \\
+z = 6 + 5                   & Bloque 1 & El valor de i cambio, pero el de j es el del primer reglon \\
+Final                       &          & w = 13, x = 9, y = 13, z = 11                             
+\end{tabular}
+\end{table}
+\end{proof}

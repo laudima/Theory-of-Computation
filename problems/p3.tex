@@ -1,0 +1,21 @@
+\begin{Pro}
+Define una función recursiva que compute los prefijos de una expresión regular. La
+base de tal función recursiva es: 
+\begin{align*}
+    prefix(\varepsilon) = \{\varepsilon\}
+    prefix(a) = \{a\}
+\end{align*}
+Completa la definición. 
+\end{Pro}
+
+\begin{proof}
+    \hspace{5mm}
+Para definir los prefijos de una expresión regular, podemos considerar las siguientes reglas:
+
+Podemos definir las reglas que aplicamos para cada una de las operaciones básicas de las expresiones regulares:
+\begin{align*}
+    prefix(ab) = \{a, ab\}
+    prefix(a|b) = \{a, b, a|b\}
+    prefix(a*) = \{a^n | n \geq 0\}
+\end{align*}
+\end{proof}
