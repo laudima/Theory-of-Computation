@@ -54,7 +54,9 @@ El \textit{tamaño} de una cadena es la cantidad de símbolos que la componen.
 A la \textit{cadena vacía} la llamamos $\epsilon$  o $\lambda$, de manera de que $|\lambda| = 0$
 \end{Def}
 
-La cadena vacía es diferente al conjunto vacío $\lambda \neq \emptyset$. Más adelante veremos que aparece en conjunto de todas las cadenas ($\Sigma^*$) sobre un alfabeto.
+La cadena vacía es diferente al conjunto vacío $\lambda \neq \emptyset$. Más adelante veremos que siempre aparece en conjunto de todas las cadenas ($\Sigma^*$) sobre un alfabeto.
+
+%Definicion 6
 \begin{Def}
 La \textit{reversa} de una cadena $w$ se denota como $w^R$ y se obtiene invirtiendo el orden de los símbolos en $w$.
 \end{Def}
@@ -64,11 +66,14 @@ La \textit{reversa} de una cadena $w$ se denota como $w^R$ y se obtiene invirtie
 Si $w = 0011$, entonces $w^R = 1100$.Podemos definir a al conjunto de las palabras palindromas\footnote{Una palabra es palíndroma si se lee igual de izquierda a derecha que de derecha a izquierda.} 
 como: $$P = \{ w \in \Sigma^* \mid w = w^R \}$$
 
+%Def 7
 \begin{Def}
-Decimos que $x$ es \textit{prefijo} de $y$,  si existe una cadena $z$ tal que $y = xz$. Por ejemplo, $00$ es prefijo de $0011$, ya que existe $z = 11$ tal que $0011 = 00 \cdot 11$.
-Análogamente \textit{sufijo} de $y$ si existe una cadena $z$ tal que $y = zx$. Por ejemplo, $11$ es sufijo de $0011$, ya que existe $z = 00$ tal que $0011 = 00 \cdot 11$.
+Decimos que $x$ es \textit{prefijo} de $y$,  si existe una cadena $z$ tal que $y = xz$. 
+Análogamente decimos que $x$ es \textit{sufijo} de $y$ si existe una cadena $z$ tal que $y = zx$.
+\begin{itemize}
+\item La cadena vacía es prefijo y sufijo de cualquier cadena.
+\end{itemize}
 \end{Def}
-
 \textbf{Ejemplos:}
 
 \begin{itemize}

@@ -125,7 +125,7 @@ Esta función se denota como $\delta: Q \times \{\Sigma \cup \lambda\}\to 2^Q$ (
     \item $|x \cdot y| = |x| + |y|$ para toda cadena $x$ e $y$.
     \item $w^m w^n = w^{m+n}$
 \end{itemize}
-    El conjunto de $(\Sigma^*, \cdot)$ con $\lambda$ como identidades es un monoide, ya que cumple con las propiedades de asociatividad e identidad.
+    El conjunto de $(\Sigma^*, \cdot)$ con $\lambda$ como identidad es un monoide, ya que cumple con las propiedades de asociatividad e identidad.
 \end{Def}
 
 \subsection{Lenguajes y operaciones sobre lenguajes}
@@ -148,7 +148,7 @@ Dado un lenguaje $L \subseteq \Sigma^*$, definimos las siguientes operaciones so
 
 Una analogía útil es pensar en los lenguajes es como el el lenguaje español. Sabemos que nuestro
 alfabeto es $\Sigma = \{a, b, c, \ldots, z\}$ y que podemos formar palabras (cadenas) con estos símbolos.El 
-lenguaje español $L(esp)$ es un subconjunto de $\Sigma^*$. Otro ejemplo es pensar en un lenguaje de programación, donde el alfabeto es el conjunto de caracteres ASCII y 
+lenguaje español $L(esp)$ es un subconjunto de $\Sigma^*$. Otro ejemplo es pensar en un lenguaje de programación como $C$, donde el alfabeto es el conjunto de caracteres ASCII y 
 el lenguaje es el conjunto de todas las cadenas que son programas válidos en ese lenguaje.
 \\ \\ 
 Algunos ejemplos de lenguajes son:
@@ -185,7 +185,7 @@ Algunos ejemplos de lenguajes son:
     $$\{10, 11, 101, 111, 1011, 1101, \dots\}$$
 
     Seguramente alguna vez hemos programado un verificador de números primos en algún lenguaje de programación. En general, 
-    veremos que los lenguajes son conjuntos de cadenas que cumplen ciertas propiedades. Y algunos lenguajes son capturados por expresiones regulares o autómatas.
+    veremos que los lenguajes son conjuntos de cadenas que cumplen ciertas propiedades. Algunos lenguajes son capturados por expresiones regulares o autómatas.
 
     \subsubsection{Muchas cosas se pueden resolver con lenguajes y autómatas, y muchas cosas que no}
 
@@ -193,7 +193,7 @@ Una de las cosas que resuelven los autómatas es decidir si una cadena pertenece
 o no a un lenguaje. Este es un problema de decisión (Entscheidungsproblem), 
 gracias a Turing sabemos que no podemos obtener un sí o no para cualquier problema. 
 
-Un problema de decisión puede ser determinar si una cadena $w$ pertenece a un lenguaje $L$. 
+Un \textit{problema de decisión} puede ser determinar si una cadena $w$ pertenece a un lenguaje $L$. 
 Por ejemplo, pensemos en el lenguaje de los números primos, si tenemos cualquier cadena podríamos preguntarnos
 si esta representación binaria es un número primo. ¿Dada una cadena $w$, $w \in L_p?$.  
 
