@@ -1,29 +1,77 @@
 \section{Cadenas y alfabetos}
 
+%Definicion 1
 \begin{Def}
 Un \textit{alfabeto} es un conjunto finito no vació. Para referirnos al alfabeto utilizaremos $\Sigma$ 
 \end{Def}
 
+\textbf{Ejemplo:}
+\begin{itemize}
+\item  $\Sigma = \{0,1\}$ es un alfabeto binario.
+\item  $\Sigma = \{a,b,c, \ldots z\}$ es un alfabeto de letras.
+\item  $\Sigma = \{\text{El conjunto de todos los símbolos ASCII} \}$
+\end{itemize}
+
+%Definicion 2
 \begin{Def}
 Los \textit{símbolos} o \textit{letras} son elementos de $\Sigma$, es decir, de nuestro alfabeto. 
 \end{Def}
+\textbf{Ejemplo}:
 
+\begin{itemize}
+\item Si $\Sigma = \{0,1\}$, entonces $0$ y $1$ son símbolos de $\Sigma$.
+\item Si $\Sigma = \{a,b,c, \ldots z\}$, entonces $a$, $b$, $c$, $\ldots$, $z$ son símbolos de $\Sigma$.
+\item Si $\Sigma = \{\text{El conjunto de todos los símbolos ASCII} \}$, entonces cada símbolo ASCII es un símbolo de $\Sigma$.
+\end{itemize}
+
+%Definicion 3
 \begin{Def}
-    Una \textit{cadena} (string) es una secuencia finita de elementos de $\Sigma$. Por ejemplo, si $\Sigma = \{0,1\}$, entonces $0011$ es una cadena sobre $\Sigma$.
+Una \textit{cadena} (string) es una secuencia finita de elementos de $\Sigma$.
 \end{Def}
 
+\textbf{Ejemplo}:
+\begin{itemize}
+\item Si $\Sigma = \{0,1\}$, entonces $0011$ es una cadena sobre $\Sigma$.
+\item Si $\Sigma = \{a,b,c, \ldots z\}$, entonces $abc$ es una cadena sobre $\Sigma$.
+\item Si $\Sigma = \{\text{El conjunto de todos los símbolos ASCII} \}$, entonces $Hello\$\#@$ es una cadena sobre $\Sigma$.
+\end{itemize}
+
+%Definicion 4
 \begin{Def}
-El \textit{tamaño} de una cadena es la cantidad de símbolos que la componen. Por ejemplo, el tamaño de la cadena $0011$ es $4$. Y lo denotamos como $|0011| = 4$.
+El \textit{tamaño} de una cadena es la cantidad de símbolos que la componen.
 \end{Def}
 
+\textbf{Ejemplo}:
+
+\begin{itemize}
+    \item Si $\Sigma = \{0,1\}$, entonces $|0011| = 4$.
+    \item Si $\Sigma = \{a,b,c, \ldots z\}$, entonces $|abc| = 3$.
+    \item Si $\Sigma = \{\text{El conjunto de todos los símbolos ASCII} \}$, entonces $|Hello\$\#@| = 8$.
+\end{itemize}
+
+%Definicion 5
 \begin{Def}
 A la \textit{cadena vacía} la llamamos $\epsilon$  o $\lambda$, de manera de que $|\lambda| = 0$
 \end{Def}
 
+La cadena vacía es diferente al conjunto vacío $\lambda \neq \emptyset$. Más adelante veremos que aparece en conjunto de todas las cadenas ($\Sigma^*$) sobre un alfabeto.
 \begin{Def}
-La \textit{reversa} de una cadena $w$ se denota como $w^R$ y se obtiene invirtiendo el orden de los símbolos en $w$. Por ejemplo, si $w = 0011$, entonces $w^R = 1100$.
+La \textit{reversa} de una cadena $w$ se denota como $w^R$ y se obtiene invirtiendo el orden de los símbolos en $w$.
 \end{Def}
+
+\textbf{Ejemplo}:
+
+Si $w = 0011$, entonces $w^R = 1100$.Podemos definir a al conjunto de las palabras palindromas\footnote{Una palabra es palíndroma si se lee igual de izquierda a derecha que de derecha a izquierda.} 
+como: $$P = \{ w \in \Sigma^* \mid w = w^R \}$$
 
 \begin{Def}
 Decimos que $x$ es \textit{prefijo} de $y$,  si existe una cadena $z$ tal que $y = xz$. Por ejemplo, $00$ es prefijo de $0011$, ya que existe $z = 11$ tal que $0011 = 00 \cdot 11$.
+Análogamente \textit{sufijo} de $y$ si existe una cadena $z$ tal que $y = zx$. Por ejemplo, $11$ es sufijo de $0011$, ya que existe $z = 00$ tal que $0011 = 00 \cdot 11$.
 \end{Def}
+
+\textbf{Ejemplos:}
+
+\begin{itemize}
+    \item Si $w = 0011$ y $x = 00$, entonces $x$ es prefijo de $w$, ya que existe $z = 11$ tal que $0011 = 00 \cdot 11$.
+    \item Si $w = 0011$ y $y = 11$, entonces $y$ es sufijo de $w$, ya que existe $z = 00$ tal que $0011 = 00 \cdot 11$.
+\end{itemize}

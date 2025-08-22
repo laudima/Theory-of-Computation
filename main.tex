@@ -25,7 +25,7 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{tikz}
-\usetikzlibrary{arrows,decorations.pathmorphing,calc,chains,automata}
+\usetikzlibrary{arrows,decorations.pathmorphing,calc,chains,automata,positioning,arrows.meta}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -69,6 +69,11 @@ counter=Definición]{Def}[1][]{drop fuzzy
 shadow,enhanced,
 colback=white!50!mygray,colframe=cyan!75!black, fonttitle=\bfseries, title=Definición \thetcbcounter, lower separated=false,#1}
 
+\newcounter{Lema}
+\newtcolorbox[use
+counter=Lema]{Lem}[1][]{drop fuzzy
+shadow,enhanced,
+colback=white!50!mygray,colframe=orange!75!black, fonttitle=\bfseries, title=Lema \thetcbcounter, lower separated=false,#1}
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
