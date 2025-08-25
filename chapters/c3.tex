@@ -147,7 +147,7 @@ Dado un lenguaje $L \subseteq \Sigma^*$, definimos las siguientes operaciones so
 \end{Def}
 
 Una analogía útil es pensar en los lenguajes es como el el lenguaje español. Sabemos que nuestro
-alfabeto es $\Sigma = \{a, b, c, \ldots, z\}$ y que podemos formar palabras (cadenas) con estos símbolos.El 
+alfabeto es $\Sigma = \{\texttt{a, b, c, \ldots, z}\}$ y que podemos formar palabras (cadenas) con estos símbolos.El 
 lenguaje español $L(esp)$ es un subconjunto de $\Sigma^*$. Otro ejemplo es pensar en un lenguaje de programación como $C$, donde el alfabeto es el conjunto de caracteres ASCII y 
 el lenguaje es el conjunto de todas las cadenas que son programas válidos en ese lenguaje.
 \\ \\ 
@@ -211,8 +211,36 @@ un procedimiento efectivo para decidir si una proposición es verdadera o falsa 
 \end{figure}
 
 \end{enumerate}
-Tenemos algunas propiedades sobre los lenguajes: 
 
+\subsubsection{Operaciones sobre lenguajes}
+
+\textbf{Ejemplo 1}. Sea ($L \in \Sigma^* = \{0,1\}^*$). 
+
+\begin{itemize}
+    \item El lenguaje de todas las cadenas que empiezan con $0$ es $L_0 = \{0w \mid w \in \Sigma^*\} = \{0,01,00, 000, 001, \cdots\}$.
+    \item El lenguaje de todas las cadenas que terminan con $1$ es $L_1 = \{w1 \mid w \in \Sigma^*\} = \{1, 01, 11, 001, 011, \cdots\}$
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Unión:} $L_1 \cup L_2 = \{0,1,00, 01,11, 000, 001, 010, 011, \cdots\} = \{0w \ \cup \ w1 \mid w \in \Sigma^*\}$
+    \item \textbf{Intersección:} $L_1 \cap L_2  = \{ 01, 001, 011, 0001, \cdots\} $
+    \item \textbf{Concatenación:} $L_1L_2 = \{01,001,011,101,0101, \cdots\}$ (La concatenación es como un producto cruz de los elementos de ambos lenguajes concatenados)
+    \item \textbf{Diferencia:} $L_1 - L_2 = \{0,00,000,001, \cdots\}$
+    \item \textbf{Complemento:} $\overline{L_1} = \{1,10,11,100, 101, \cdots\}$
+\end{itemize}
+ 
+\textbf{Ejemplo 2}. Sea $L$ el conjunto de letras $\{A,B,C \dots Z, a,b,c, \dots z\}$ y $D$ el conjunto de dígitos $\{0,1, \dots , 9\}$.
+
+\begin{enumerate}
+    \item $L \cup D$ es el conjunto de letras y de números, tenemos $62$ símbolos $(26+26+10) = 62$ cadenas de longitud 1. Cada una de estas cadenas es una letra o un dígito. 
+    \item $LD$ es el conjunto de $520$ cadenas de longitud 2 $(26 + 26)*2$, cada una siendo una letra concatenada a un número. 
+    \item $L^4$ son todas las cadenas con 4 letras. 
+    \item $L^*$ son todas las cadenas de letras incluyendo la cadena vacía $\lambda$
+    \item $L(L \cup D)^*$ es el conjunto de todas las cadenas de letras y números que empiezan con una letra. 
+    \item $D^{+}$ es el conjunto de todas las cadenas de uno o más dígitos.
+\end{enumerate}
+
+\subsubsection{Propiedades de las operaciones sobre lenguajes}
 \begin{itemize}
     \item \textbf{Conmutatividad de la unión:} $L_1 \cup L_2 = L_2 \cup L_1$
     \item \textbf{Asociatividad de la unión:} $(L_1 \cup L_2) \cup L_3 = L_1 \cup (L_2 \cup L_3)$

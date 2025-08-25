@@ -1,2 +1,127 @@
-\section{Expresiones Regulares}
+\section{Patrones y Expresiones Regulares}
 
+\subsection{Patrones}
+
+Hasta ahora hemos visto que los lenguajes generan ciertas cadenas que cumplen un patrón específico. 
+
+\begin{Def}
+Un \textbf{patrón} $\alpha$ es una cadena de símbolos que representan un subconjunto de elementos de $\Sigma^*$. Para
+representar el lenguaje que describe un patrón lo denotaremos como: 
+
+$$L(\alpha) = \{ x \in \Sigma^* \mid x \text{ corresponde con } \alpha\}$$
+
+\end{Def}
+
+Ahora veremos como describir estos patrones a partir de los símbolos y
+de las mismas operaciones que utilizamos para los lenguajes (unión, concatenación y la clausura de Kleene). 
+
+\begin{Def}
+Tenemos \textbf{patrones atómicos}, es decir que corresponden con un símbolo;
+\begin{itemize}
+    \item $w$ para cada elemento en $\Sigma$. Es decir, este patrón corresponde con el lenguaje $L(a) = \{a\}$
+    \item $\lambda$, corresponde con el lenguaje que solo incluye a la cadena vacía $L(\lambda) = \{\lambda\}$
+    \item  $\emptyset$, corresponde al lenguaje vacío $L(\emptyset) = \emptyset$
+\end{itemize}
+
+Y tenemos \textbf{patrones compuestos}, que se forman inductivamente a partir de patrones atómicos.
+Si $\alpha$ y $\beta$ son patrones, entonces podemos formar nuevos patrones de la siguiente manera:
+\begin{itemize}
+    \item \textbf{Unión:} $\alpha \cup \beta$ es un patrón que corresponde con el lenguaje $L(\alpha) \cup L(\beta)$.
+    \item \textbf{Concatenación:} $\alpha \cdot \beta$ es un patrón que corresponde con el lenguaje $L(\alpha \cdot \beta) = L(\alpha) \cdot L(\beta)$.
+    \item \textbf{Clausura de Kleene:} $\alpha^*$ es un patrón que corresponde con el lenguaje $$L(\alpha^*) = L^0(\alpha) \cup L^1(\alpha) \cup L^2(\alpha) \cup \ldots$$.
+    \item \textbf{Intersección:} $\alpha \cap \beta$ es un patrón que corresponde con el lenguaje $L(\alpha \cap \beta) = L(\alpha) \cap L(\beta)$.
+    \item \textbf{Negación:} $\neg \alpha$ es un patrón que corresponde con el lenguaje $L(\neg \alpha) = \Sigma^* - L(\alpha)$.
+\end{itemize}
+\end{Def}
+
+
+En $UNIX$ podemos ocupar el comando $\texttt{grep}$ para encontrar cadenas que representen cierto patrón. Y aquí tenemos 
+símbolos que tienen una función específica, como;
+
+\begin{itemize}
+    \item \texttt{.} - sirve para representar cualquier carácter
+    \item \^{} - representa el inicio de una línea
+    % \item \texttt{$\$$} - representa el final de una línea
+    \item \texttt{+} - representa uno o más que la expresión se encuentra una o más veces (similar a la clausura positiva)
+    \item \texttt{*} - representa que la cadena se encuentra cero o más caracteres (clausura de Kleene)
+    \item \texttt{?} - representa que la cadena se encuentra cero o una vez
+    \item \texttt{d} - representa cualquier dígito (0-9)
+    \item \texttt{D} - representa cualquier carácter que no sea un dígito
+    \item \texttt{s} - representa cualquier espacio en blanco (espacio, tabulación, salto de línea)
+\end{itemize}
+
+Otros símbolos útiles incluyen:
+
+\begin{itemize}
+    \item `\texttt{[a-z]}` - representa cualquier carácter dentro de los corchetes, este caso el conjunto de todas las letras minusculas. 
+    \item `[\^{}0-1]` - representa cualquier carácter que no esté dentro de los corchetes. En este caso el conjunto de todos los caracteres que no tienen un número. 
+\end{itemize}
+
+Intenta ver que se imprimia en la terminal con estos comandos. 
+
+\begin{lstlisting}[language=bash]
+echo abcd | grep ^ab
+echo abcd | grep ab$
+echo "123_456_123_456" | grep -E '([0-9]+)_([0-9]+)_\1_\2'
+echo "777 476 1820" | grep -E '^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$'
+\end{lstlisting}
+
+\subsection{Expresiones Regulares}
+
+Las \textbf{expresiones regulares} son otra manera de definir lenguajes, muy parecidos a los patrones \textbf{patrones}. Aunque todavía 
+no hemos visto los Autómatas, más adelante veremos que las expresiones regulares son una manera concisa
+de representar el lenguaje que genera un automata (de hecho, probaremos que son equivalentes y veremos un 
+algoritmo para pasar de expresiones regulares a autómatas y viceversa). Y son una representación más fácil programar para poder 
+construir compiladores o lenguajes de programación.  
+
+\begin{Def}
+    Decimos que R es un \textbf{expresión regular} si $R$ es:
+    \begin{enumerate}
+        \item $w$ para algun símbolo en $\Sigma$
+        \item $\lambda$, la cadena vacía
+        \item $\emptyset$
+        \item $R_1 + R_2$, donde $R1$ y $R_2$ son expresiones regulares
+        \item $R_1R_2$, donde $R1$ y $R_2$ son expresiones regulares
+        \item $R_1^*$, donde $R_1$ es una expresión regular
+    \end{enumerate}
+\end{Def}
+
+\textbf{Ejemplos:}
+
+\begin{enumerate}
+    \item Si $\Sigma = \{\texttt{a,b,c,\dots}\}$, entonces \texttt{hola} y \texttt{holi} son expresiones regulares. 
+    \begin{align*}
+        L(\texttt{hola}) &= \texttt{hola} \\ 
+        L(\texttt{holi}) &= \texttt{holi} \\
+        L(\texttt{hol(a+i)}) &= \{\texttt{hola}, \texttt{holi}\} \\
+        L(\texttt{h}o^+\texttt{l}(\texttt{a+i})) &= \{\texttt{hola, \texttt{holi}, \texttt{hoola},\texttt{hooli}, \dots }\}
+    \end{align*}
+
+    Para los siguientes ejemplos consideremos el alfabeto $\Sigma=\{0,1\}$
+
+    \item $(0+1)^* = \{0,00,000,000,\dots\} \cup \{1,11,111,1111, \dots\}$, es decir todas cadenas de $0's$ o de $1's$ 
+    \item $\Sigma^*1\Sigma$ = \{1,01,010,110,111, \dots\}, son todas las cadenas que tienen al menos un uno. 
+    \item $\Sigma^*001\Sigma^*$, son todas las cadenas que tienen $001$ como subcadena. 
+    \item $(\Sigma\Sigma)^*$, todas las cadenas de tamaño par. 
+    \item $01 = \{01\}$
+    \item $(0 + \lambda)1 = 01 + 1$
+    \item $1\emptyset = \emptyset$
+    \item $\emptyset^* = \{\lambda\}$
+
+    Podemos intentar encajar un patron de teléfono o un número decimal o entero en una 
+    expresión regular. Por ejemplo si, $D=\{0,1, \dots 9\}$
+\begin{align*}
+    (+ \cup - \cup \lambda)((D^*) \cup (D^+,D^*) \cup (D^*.D^+))
+\end{align*}
+
+\begin{itemize}
+    \item $D*$ son todos los enteros, (eg. $43$)
+    \item $(D^+.D^*)$ son todos los números decimales, con un dígito enfrente (e.g $3.1416$)
+    \item $(D^*.D^+)$ son todos los números decimales, puede ser $.0111$ 
+\end{itemize}
+
+Más adelante cuando veamos como pasar expresiones regulares a autómatas veremos que es más fácil tratar de minimizar primero la expresión. Para 
+ello existen algunas reglas algebraicas con las que podemos hacer operaciones. 
+
+
+\end{enumerate}
