@@ -1,0 +1,48 @@
+\section{Gramáticas Formales}
+
+Una \textbf{gramática formal} es un conjunto de reglas que describen la estructura de un lenguaje formal( si, otra forma). 
+Se compone de un conjunto de símbolos terminales, un conjunto de símbolos no terminales, un símbolo inicial y un conjunto de reglas de producción. 
+Las gramáticas formales se utilizan en el diseño de compiladores, análisis sintáctico y generación de lenguajes de programación
+
+\begin{Def}
+    Una \textbf{gramática formal} $G$ se define como un cuádruple $G = (V, \Sigma, P, S)$ donde:
+    \begin{itemize}
+        \item $V$ es un conjunto finito de \textbf{símbolos no terminales}.
+        \item $\Sigma$ es un conjunto finito de \textbf{símbolos terminales} (alfabeto).
+        \item $P$ es un conjunto de \textbf{reglas de producción} de la forma $A \rightarrow \alpha$, donde $A \in V$ y $\alpha \in (V \cup \Sigma)^*$.
+        \item $S \in V$ es el \textbf{símbolo inicial}.
+    \end{itemize}
+\end{Def}
+
+\textbf{Ejemplo:} Consideremos la gramática $G = (V, \Sigma, P, S)$ donde:
+\begin{itemize}
+    \item $V = \{S\}$
+    \item $\Sigma = \{a, b\}$
+    \item $P = \{S \rightarrow aSb \mid \lambda\}$
+    \item $S$ es el símbolo inicial.
+\end{itemize}
+
+Otra manera de representar las reglas de producción es:
+\begin{align*}
+    S &\rightarrow aSb \\
+    S &\rightarrow \lambda
+\end{align*}
+Esta gramática genera el lenguaje $L(G) = \{a^n b^n \mid n \geq 0\}$, que consiste en cadenas de la forma $a^n b^n$ donde $n$ es un número entero no negativo. Las gramáticas formales se clasifican en diferentes tipos según su poder expresivo. La jerarquía de Chomsky clasifica las gramáticas en cuatro tipos:
+\begin{itemize}
+    \item \textbf{Gramáticas Tipo 0:} Gramáticas sin restricciones, que pueden generar cualquier lenguaje recursivamente enumerable.
+    \item \textbf{Gramáticas Tipo 1:} Gramáticas sensibles al contexto, que generan lenguajes contextuales.
+    \item \textbf{Gramáticas Tipo 2:} Gramáticas libres de contexto, que generan lenguajes libres de contexto.
+    \item \textbf{Gramáticas Tipo 3:} Gramáticas regulares, que generan lenguajes regulares.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/chomsky-escribiendo.jpg}
+    \caption{Noam Chomsky, escribiendo cosas de lenguajes}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/chomsky-vs-foucault.jpg}
+    \caption{Chomsky vs Foucault, 1971. Ver debate completo sobre \href{https://www.youtube.com/watch?v=3wfNl2L0Gf8}{\textit{La naturaleza humana}}}
+\end{figure}
