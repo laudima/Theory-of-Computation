@@ -54,21 +54,21 @@ Otros símbolos útiles incluyen:
 
 \begin{itemize}
     \item `\texttt{[a-z]}` - representa cualquier carácter dentro de los corchetes, este caso el conjunto de todas las letras minusculas. 
-    \item `[\^{}0-1]` - representa cualquier carácter que no esté dentro de los corchetes. En este caso el conjunto de todos los caracteres que no tienen un número. 
+    \item `[\^{}0-9]` - representa cualquier carácter que no esté dentro de los corchetes. En este caso el conjunto de todos los caracteres que no tienen un número. 
 \end{itemize}
 
-Intenta ver que se imprimia en la terminal con estos comandos. 
+Intenta ver que se imprime en la terminal con estos comandos. 
 
 \begin{lstlisting}[language=bash]
 echo abcd | grep ^ab
 echo abcd | grep ab$
 echo "123_456_123_456" | grep -E '([0-9]+)_([0-9]+)_\1_\2'
-echo "777 476 1820" | grep -E '^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$'
+echo "777-476-1820" | grep -E '[0-9]{3}-[0-9]{3}-[0-9]{4}$'
 \end{lstlisting}
 
 \subsection{Expresiones Regulares}
 
-Las \textbf{expresiones regulares} son otra manera de definir lenguajes, muy parecidos a los patrones \textbf{patrones}. Aunque todavía 
+Las \textbf{expresiones regulares} son otra manera de definir lenguajes, muy parecidos a los \textbf{patrones}. Aunque todavía 
 no hemos visto los Autómatas, más adelante veremos que las expresiones regulares son una manera concisa
 de representar el lenguaje que genera un automata (de hecho, probaremos que son equivalentes y veremos un 
 algoritmo para pasar de expresiones regulares a autómatas y viceversa). Y son una representación más fácil programar para poder 
@@ -144,6 +144,21 @@ Si $a,b,c$ son expresiones regulares, entonces:
     \\ Si $a \subset b^* \rightarrow a + b^* = b^*$
     \item \textbf{Ley de DeMorgan:} $(a + b)^* = (a^* + b^*)^* = (a^*b^*)^*$
 \end{enumerate}
+
+Para demotrar esta ultima ley, veamos que $L((a+b)^*) = L(a^*b^*)^*$. Podemos expandir el lado izquierdo como:
+\begin{align*}
+    L((a+b)^*) &= (a+b)^0 + (a+b)^1 + (a+b)^2 + \dots \\
+    &= \lambda + (a+b) + (a+b)(a+b) + (a+b)(a+b)(a+b) + \dots \\
+    &= \lambda + (a+b) + (aa + ab + ba + bb) + (aaa + aab + aba + abb + baa + bab + bba + bbb) + \dots \\
+    &= \lambda + a + b + ab + ba + a^2 + b^2 + a^3 + a^2b + ab^2 + b^3 + \dots
+\end{align*}
+
+Y el lado derecho como:
+\begin{align*}
+    L((a^*b^*)^*) &= \lambda + (a^*b^*) + (a^*b^*a^*b^*) + \dots \\
+    &= a^0b^0 + a^1b^0 + a^0b^1 + a^1b^1 + a^0b^1a^1b^0  + \dots \\
+    &= \lambda + a + b + ab + ba + a^2 + b^2 + a^2b^1 + a^1b^2 + \dots
+\end{align*}
 
 \textbf{Ejemplos:}
 
